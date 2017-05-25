@@ -53,7 +53,7 @@ else
 	echo "Não instalada!"
 	echo -n "Instalando tafera na cron..."
 	echo '# Zabbix check' >> /var/spool/cron/crontabs/root
-	echo '*/5 * * * * root /usr/local/sbin/zimbra_postfix.sh 1>/dev/null 2>/dev/null' >> /var/spool/cron/crontabs/root
+	echo '*/5 * * * * /usr/local/sbin/zimbra_postfix.sh 1>/dev/null 2>/dev/null' >> /var/spool/cron/crontabs/root
 	echo "OK!"
 fi
 
