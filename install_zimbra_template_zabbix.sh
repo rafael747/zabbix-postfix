@@ -64,6 +64,6 @@ service zabbix-agent restart >/dev/null
 
 echo "OK!"
 
-echo "Instalando pflogsumm (visualizador de log do postfix)..."
-apt-get install pflogsumm
+echo "Instalando pflogsumm (visualizador de log do postfix) e bc ..."
+apt-get install pflogsumm bc
 echo "OK!"
