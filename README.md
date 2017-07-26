@@ -4,7 +4,12 @@ Postfix template for Zabbix
 On Server:
  * Import **template_postfix.xml** template
     
-On client:
+On client: 
+
+ * Use **install_postfix_template_zabbix.sh** script 
+ 
+ ### or
+
 
     apt-get install pflogsumm bc
 
