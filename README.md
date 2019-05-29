@@ -6,12 +6,18 @@ On Server:
     
 On client: 
 
+ * Install **zabbix-agent**
  * Use **install_postfix_template_zabbix.sh** script 
  
  ### or
 
-
+    # Install the following packages
+    
+    # Debian/Ubuntu
     apt-get install pflogsumm bc
+    
+    # RHEL/Centos
+    yum install postfix-perl-scripts bc
 
     cp zabbix_postfix.sh /usr/local/sbin/
     cp pygtail.py /usr/local/sbin/
