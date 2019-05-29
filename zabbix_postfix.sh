@@ -4,7 +4,11 @@
 # DEPS: pygtail.py
 # DEPS:	bc
 
-MAILLOG=/var/log/mail.log
+# For Debian/Ubuntu
+[ -f /var/log/mail.log ] && MAILLOG=/var/log/mail.log
+# For RHEL/Centos
+[ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
+
 FPOS=/tmp/zabbix-postfix-offset.dat
 PFLOGSUMM=/usr/sbin/pflogsumm
 LOGTAIL=/usr/local/sbin/pygtail.py
