@@ -49,10 +49,12 @@ service zabbix-agent restart >/dev/null
 
 echo "OK!"
 
-echo "Instalando pflogsumm (visualizador de log do postfix) e bc ..."
-apt-get install pflogsumm bc
-echo "OK!"
-
+echo "Instale os seguintes pacotes: pflogsumm (visualizador de log do postfix) e bc ..."
+echo "Debian/Ubuntu"
+echo "apt-get install pflogsumm bc"
+echo ""
+echo "RHEL/Centos"
+echo "yum install postfix-perl-scripts bc"
 
 echo -e "\nInsira a entrada a seguir na cron:\n"
 
