@@ -14,7 +14,7 @@ On client:
     # Install the following packages
     
     # Debian/Ubuntu
-    apt-get install pflogsumm bc
+    apt install pflogsumm bc zabbix-sender
     
     # RHEL/Centos
     yum install postfix-perl-scripts bc
