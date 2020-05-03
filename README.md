@@ -7,6 +7,7 @@ On Server:
 On client: 
 
  * Install **zabbix-agent**
+ * Install **zabbix-sender**
  * Use **install_postfix_template_zabbix.sh** script 
  
  ### or
