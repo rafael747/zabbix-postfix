@@ -24,11 +24,10 @@ On client:
     chmod 440 /etc/sudoers.d/zabbix_postfix
     
     # Zabbix agent config dir may change, see https://github.com/rafael747/zabbix-postfix/issues/3#issuecomment-623629611
-    # Debian/Ubuntu
-    cp zabbix_postfix.conf /etc/zabbix/zabbix_agentd.conf.d/
-    
-    # RHEL/Centos
-    cp zabbix_postfix.conf /etc/zabbix/zabbix_agentd.d/
+
+    cp zabbix_postfix.conf /etc/zabbix/zabbix_agentd.conf.d/   # Debian/Ubuntu
+    cp zabbix_postfix.conf /etc/zabbix/zabbix_agentd.d/        # RHEL/Centos
+    cp zabbix_postfix.conf /etc/zabbix/zabbix_agent2.d/        # zabbix-agent2
     
     service sudo restart
     service zabbix-agent restart

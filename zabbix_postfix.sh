@@ -12,7 +12,12 @@
 FPOS=/tmp/zabbix-postfix-offset.dat
 PFLOGSUMM=/usr/sbin/pflogsumm
 LOGTAIL=/usr/local/sbin/pygtail.py
-ZABBIX_CONF=/etc/zabbix/zabbix_agentd.conf
+
+# For zabbix-agent
+[ -f /etc/zabbix/zabbix_agentd.conf ] && ZABBIX_CONF=/etc/zabbix/zabbix_agentd.conf
+
+# For zabbix-agent2 
+[ -f /etc/zabbix/zabbix_agent2.conf ] && ZABBIX_CONF=/etc/zabbix/zabbix_agent2.conf
 
 function zsend {
   /usr/bin/zabbix_sender -c $ZABBIX_CONF -k $1 -o $2
