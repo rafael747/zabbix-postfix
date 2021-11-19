@@ -36,7 +36,7 @@ On client:
  
     ```
     # Zabbix check
-    */5 * * * * /usr/local/sbin/zabbix_postfix.sh 1>/dev/null 2>/dev/null'
+    */5 * * * * /usr/local/sbin/zabbix_postfix.sh 1>/dev/null 2>/dev/null
     ```
 
  ### or
