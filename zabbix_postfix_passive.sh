@@ -5,8 +5,8 @@
 # For RHEL/Centos
 [ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
 
-PFOFFSETFILE=/tmp/zabbix-postfix-offset.dat
-PFSTATSFILE=/tmp/postfix_statsfile.dat
+PFOFFSETFILE=/tmp/zabbix-postfix-passive-offset.dat
+PFSTATSFILE=/tmp/zabbix-postfix-passive-statsfile.dat
 TEMPFILE=$(mktemp)
 PFLOGSUMM=/usr/sbin/pflogsumm
 PYGTAIL=/usr/local/bin/pygtail
