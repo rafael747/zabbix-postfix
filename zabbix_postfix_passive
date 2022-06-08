@@ -1,0 +1,1 @@
+zabbix ALL=(ALL) NOPASSWD: /usr/bin/zabbix-postfix-stats.sh
