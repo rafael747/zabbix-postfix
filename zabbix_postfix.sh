@@ -9,6 +9,17 @@
 # For RHEL/Centos
 [ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
 
+# pygtail from Debian 11, Ubuntu 22.04 and later
+if [ -f /usr/bin/pygtail ]; then
+  PYGTAIL=/usr/bin/pygtail
+# pygtail from Python PIP install to Zabbix user
+elif [ -f /var/lib/zabbix/.local/bin/pygtail ]; then
+  PYGTAIL=/var/lib/zabbix/.local/bin/pygtail
+# pygtail from copy within this repository
+else
+  PYGTAIL=/usr/local/sbin/pygtail
+fi
+
 FPOS=/tmp/zabbix-postfix-offset.dat
 PFLOGSUMM=/usr/sbin/pflogsumm
 LOGTAIL=/usr/local/sbin/pygtail.py

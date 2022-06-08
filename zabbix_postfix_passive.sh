@@ -5,11 +5,21 @@
 # For RHEL/Centos
 [ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
 
+# pygtail from Debian 11, Ubuntu 22.04 and later
+if [ -f /usr/bin/pygtail ]; then
+  PYGTAIL=/usr/bin/pygtail
+# pygtail from Python PIP install to Zabbix user
+elif [ -f /var/lib/zabbix/.local/bin/pygtail ]; then
+  PYGTAIL=/var/lib/zabbix/.local/bin/pygtail
+# pygtail from copy within this repository
+else
+  PYGTAIL=/usr/local/sbin/pygtail
+fi
+
 PFOFFSETFILE=/tmp/zabbix-postfix-passive-offset.dat
 PFSTATSFILE=/tmp/zabbix-postfix-passive-statsfile.dat
 TEMPFILE=$(mktemp)
 PFLOGSUMM=/usr/sbin/pflogsumm
-PYGTAIL=/usr/local/bin/pygtail
 
 # list of values we are interested in
 PFVALS=( 'received' 'delivered' 'forwarded' 'deferred' 'bounced' 'rejected' 'held' 'discarded' 'reject_warnings' 'bytes_received' 'bytes_delivered' )
