@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-MAILLOG=/var/log/mail.log
+# For Debian/Ubuntu
+[ -f /var/log/mail.log ] && MAILLOG=/var/log/mail.log
+# For RHEL/Centos
+[ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
+
 PFOFFSETFILE=/tmp/zabbix-postfix-offset.dat
 PFSTATSFILE=/tmp/postfix_statsfile.dat
 TEMPFILE=$(mktemp)
