@@ -18,7 +18,7 @@ fi
 
 PFOFFSETFILE=/tmp/zabbix-postfix-passive-offset.dat
 PFSTATSFILE=/tmp/zabbix-postfix-passive-statsfile.dat
-TEMPFILE=$(mktemp)
+TEMPFILE=$(mktemp --suffix=-zabbix-postfix-passive)
 PFLOGSUMM=/usr/sbin/pflogsumm
 
 # list of values we are interested in
