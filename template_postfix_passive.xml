@@ -25,7 +25,7 @@
             <items>
                 <item>
                     <name>SMTP Service</name>
-                    <type>3</type>
+                    <type>0</type>
                     <snmp_community/>
                     <snmp_oid/>
                     <key>net.tcp.service[smtp]</key>
