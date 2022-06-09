@@ -9,8 +9,8 @@
     </groups>
     <templates>
         <template>
-            <template>Template App Postfix</template>
-            <name>Template App Postfix</name>
+            <template>Template App Postfix by Zabbix agent</template>
+            <name>Template App Postfix by Zabbix agent</name>
             <description/>
             <groups>
                 <group>
@@ -919,7 +919,7 @@
     </templates>
     <triggers>
         <trigger>
-            <expression>{Template App Postfix:postfix[bounced].last(0)}&gt;50</expression>
+            <expression>{Template App Postfix by Zabbix agent:postfix[bounced].last(0)}&gt;50</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Postfix: Too many bounced mails on {HOST.NAME}</name>
@@ -935,7 +935,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template App Postfix:postfix[deferred].last(0)}&gt;50</expression>
+            <expression>{Template App Postfix by Zabbix agent:postfix[deferred].last(0)}&gt;50</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Postfix: Too many deferred mails on {HOST.NAME}</name>
@@ -951,7 +951,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template App Postfix:postfix[held].last(0)}&gt;200 or {Template App Postfix:postfix.pfmailq.last(0)}&gt;200</expression>
+            <expression>{Template App Postfix by Zabbix agent:postfix[held].last(0)}&gt;200 or {Template App Postfix by Zabbix agent:postfix.pfmailq.last(0)}&gt;200</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Postfix: Too many held mails on {HOST.NAME}</name>
@@ -967,7 +967,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template App Postfix:postfix[rejected].last(0)}&gt;20 or {Template App Postfix:postfix[reject_warnings].last(0)}&gt;20</expression>
+            <expression>{Template App Postfix by Zabbix agent:postfix[rejected].last(0)}&gt;20 or {Template App Postfix by Zabbix agent:postfix[reject_warnings].last(0)}&gt;20</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Postfix: Too many rejected mails on {HOST.NAME}</name>
@@ -983,7 +983,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template App Postfix:postfix.update_data.regexp(ERROR)}=1</expression>
+            <expression>{Template App Postfix by Zabbix agent:postfix.update_data.regexp(ERROR)}=1</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>Postfix statistics could not be updated</name>
@@ -999,7 +999,7 @@
             <tags/>
         </trigger>
         <trigger>
-            <expression>{Template App Postfix:net.tcp.service[smtp].max(#3)}=0</expression>
+            <expression>{Template App Postfix by Zabbix agent:net.tcp.service[smtp].max(#3)}=0</expression>
             <recovery_mode>0</recovery_mode>
             <recovery_expression/>
             <name>SMTP service is down on {HOST.NAME}</name>
@@ -1042,7 +1042,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[bounced]</key>
                     </item>
                 </graph_item>
@@ -1054,7 +1054,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[deferred]</key>
                     </item>
                 </graph_item>
@@ -1066,7 +1066,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[discarded]</key>
                     </item>
                 </graph_item>
@@ -1078,7 +1078,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[rejected]</key>
                     </item>
                 </graph_item>
@@ -1090,7 +1090,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[reject_warnings]</key>
                     </item>
                 </graph_item>
@@ -1122,7 +1122,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[bounced]</key>
                     </item>
                 </graph_item>
@@ -1134,7 +1134,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[reject_warnings]</key>
                     </item>
                 </graph_item>
@@ -1146,7 +1146,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix.pfmailq</key>
                     </item>
                 </graph_item>
@@ -1158,7 +1158,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[discarded]</key>
                     </item>
                 </graph_item>
@@ -1170,7 +1170,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[rejected]</key>
                     </item>
                 </graph_item>
@@ -1182,7 +1182,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[received]</key>
                     </item>
                 </graph_item>
@@ -1194,7 +1194,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[held]</key>
                     </item>
                 </graph_item>
@@ -1206,7 +1206,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[forwarded]</key>
                     </item>
                 </graph_item>
@@ -1218,7 +1218,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[delivered]</key>
                     </item>
                 </graph_item>
@@ -1230,7 +1230,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[deferred]</key>
                     </item>
                 </graph_item>
@@ -1262,7 +1262,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[bytes_received]</key>
                     </item>
                 </graph_item>
@@ -1274,7 +1274,7 @@
                     <calc_fnc>2</calc_fnc>
                     <type>0</type>
                     <item>
-                        <host>Template App Postfix</host>
+                        <host>Template App Postfix by Zabbix agent</host>
                         <key>postfix[bytes_delivered]</key>
                     </item>
                 </graph_item>
