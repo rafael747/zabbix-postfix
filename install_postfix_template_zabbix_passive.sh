@@ -10,25 +10,18 @@ ERR_HIGHLIGHT="\033[1;37;101m"
 OK_HIGHLIGHT="\033[1;30;102m"
 INFO_HIGHLIGHT="\033[1;30;104m"
 
-# text & art
-BANNER_FILE="./lib/banner.txt"
-
 clear
 echo -e $RED
-cat $BANNER_FILE
-echo "https://kreibich.xyz/ - Open Source projects"
-echo "https://github.com/Kreibich-xyz/zabbix-postfix-integration"
-echo "Help and Support on info@kreibich.xyz"
+echo "https://github.com/rafael747/zabbix-postfix"
 echo -e $COL_ESCAPE
 echo -e $INFO_HIGHLIGHT
-echo "................................................................................"
-echo ". zabbix-postfix-integration is maintained by Kreibich.xyz OpenSource-Projects ."
-echo ". Original Credits go to GitHub/kstka and http://admin.shamot.cz/?p=424        ."
-echo "................................................................................"
+echo "..................................................................................."
+echo ". Credits go to http://admin.shamot.cz/?p=424, GitHub/kstka & GitHub/Kreibich.xyz ."
+echo "..................................................................................."
 echo -e $COL_ESCAPE
 
 while true; do
-    read -p "Do you wish to install postfix-integration for zabbix? (Y/n) " yn
+    read -p "Do you wish to install postfix passive agent check for zabbix? (Y/n) " yn
     case $yn in
         [Yy]* ) echo -e "Starting install process."; break;;
         [Nn]* ) echo -e "\n";echo -e $ERR_HIGHLIGHT"You aborted the installation process.\nGoodbye." $COL_ESCAPE "\n\n"; exit;;
@@ -134,7 +127,7 @@ echo -e $OK_HIGHLIGHT"\nFinished installing dependencies.\n\n"$COL_ESCAPE
 
 echo -e "Installing scripts and config-files."
 echo -n "Install /usr/bin/zabbix-postfix-stats.sh"
-if cp ./lib/install/zabbix-postfix-stats.sh /usr/bin/ && chmod +x /usr/bin/zabbix-postfix-stats.sh; then
+if cp ./zabbix_postfix_passive.sh /usr/local/sbin/ && chmod +x /usr/local/sbin/zabbix_postfix_passive.sh; then
     echo -e "["$GREEN"OK"$COL_ESCAPE"]"
 else
     echo -e "["$RED"FAILED"$COL_ESCAPE"]"
@@ -157,7 +150,7 @@ fi
 
 if ! [[ -z "$zbx_conf_dir" ]] ; then
     echo -n "Install $zbx_conf_dir userparameter_postfix.conf"
-    if cp ./lib/install/userparameter_postfix.conf $zbx_conf_dir; then
+    if cp .zabbix_postfix_passive.conf $zbx_conf_dir; then
         echo -e "["$GREEN"OK"$COL_ESCAPE"]"
     else
         echo -e "["$RED"FAILED"$COL_ESCAPE"]"
@@ -169,7 +162,7 @@ if ! [[ -z "$zbx_conf_dir" ]] ; then
 fi
 
 echo -n "Setting user privileges."
-if echo -e '#Created by zabbix-postfix-integration installer script\nzabbix ALL=(ALL) NOPASSWD: /usr/bin/zabbix-postfix-stats.sh' | EDITOR='tee -a' visudo > ./visudo.log; then
+if echo -e '#Created by zabbix-postfix-integration installer script\nzabbix ALL=(ALL) NOPASSWD: /usr/local/sbin/zabbix_postfix_passive.sh' | EDITOR='tee -a' visudo > ./visudo.log; then
     echo -e "["$GREEN"OK"$COL_ESCAPE"]"
 else
     echo -e "["$RED"FAILED"$COL_ESCAPE"]"
