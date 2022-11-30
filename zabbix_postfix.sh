@@ -9,20 +9,24 @@
 # For RHEL/Centos
 [ -f /var/log/maillog ] && MAILLOG=/var/log/maillog
 
+
+# pygtail from copy within this repository
+if [ -f /usr/local/sbin/pygtail.py ]; then
+  PYGTAIL=/usr/local/sbin/pygtail.py
 # pygtail from Debian 11, Ubuntu 22.04 and later
-if [ -f /usr/bin/pygtail ]; then
+elif [ -f /usr/bin/pygtail ]; then
   PYGTAIL=/usr/bin/pygtail
 # pygtail from Python PIP install to Zabbix user
 elif [ -f /var/lib/zabbix/.local/bin/pygtail ]; then
   PYGTAIL=/var/lib/zabbix/.local/bin/pygtail
-# pygtail from copy within this repository
+# pygtail not found
 else
-  PYGTAIL=/usr/local/sbin/pygtail
+  >&2 echo "ERROR: pygtail not found!"
+  exit 1
 fi
 
 FPOS=/tmp/zabbix-postfix-offset.dat
 PFLOGSUMM=/usr/sbin/pflogsumm
-LOGTAIL=/usr/local/sbin/pygtail.py
 
 # For zabbix-agent
 [ -f /etc/zabbix/zabbix_agentd.conf ] && ZABBIX_CONF=/etc/zabbix/zabbix_agentd.conf
@@ -34,7 +38,7 @@ function zsend {
   /usr/bin/zabbix_sender -c $ZABBIX_CONF -k $1 -o $2
 }
 
-DATA="$(${LOGTAIL} -o ${FPOS} ${MAILLOG} | ${PFLOGSUMM} -h 0 -u 0 --bounce_detail=0 --deferral_detail=0 --reject_detail=0 --no_no_msg_size --smtpd_warning_detail=0)"
+DATA="$(${PYGTAIL} -o ${FPOS} ${MAILLOG} | ${PFLOGSUMM} -h 0 -u 0 --bounce_detail=0 --deferral_detail=0 --reject_detail=0 --no_no_msg_size --smtpd_warning_detail=0)"
 
 zsend pf.received $(echo -e "${DATA}" | grep -m 1 received | cut -f1 -d"r")
 zsend pf.delivered $(echo -e "${DATA}" | grep -m 1 delivered | cut -f1 -d"d")
