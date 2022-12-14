@@ -52,7 +52,7 @@ fi
 
 # check whether file exists and the write permissions are granted
 if [ ! -w "${PFSTATSFILE}" ]; then
-        touch "${PFSTATSFILE}" && chown zabbix:zabbix "${PFSTATSFILE}" > /dev/null 2>&1
+        touch "${PFSTATSFILE}" > /dev/null 2>&1
 
         if [ ! $? -eq 0 ]; then
                 result_text="ERROR: wrong exit code returned while creating file ${PFSTATSFILE} and setting its owner to zaabbix:zabbix"
